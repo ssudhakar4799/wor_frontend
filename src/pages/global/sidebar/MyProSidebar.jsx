@@ -194,6 +194,13 @@ const MyProSidebar = () => {
                         selected={selected}
                         setSelected={setSelected}
                       />
+                      <Item
+                        title="Timesheet Approved"
+                        to="/timesheetApprove"
+                        icon={<PeopleOutlinedIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      />
                     </>
                   )
 
@@ -226,6 +233,27 @@ const MyProSidebar = () => {
                 <Item
                   title="AdminDashboard"
                   to="/AdminDashboard"
+                  icon={<PeopleOutlinedIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <Typography
+                  variant="h6"
+                  color={colors.grey[300]}
+                  sx={{ m: "15px 20px 5px 20px" }}
+                >
+                  Reporting Status
+                </Typography>
+                <Item
+                  title="Punchin Approve"
+                  to="/punchinApproved"
+                  icon={<PeopleOutlinedIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <Item
+                  title="Leave Approve"
+                  to="/leaveApprove"
                   icon={<PeopleOutlinedIcon />}
                   selected={selected}
                   setSelected={setSelected}

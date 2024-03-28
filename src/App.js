@@ -18,6 +18,8 @@ import PunchinApproved from "./pages/rptMPunchApproved/PunchinApproved";
 import { useEffect, useState } from "react";
 import { logout } from "./pages/Store/Redux/auth/action";
 import { jwtDecode as decode } from 'jwt-decode';
+import LeaveApprove from "./pages/leaveApprove/LeaveApprove";
+import ApproveTimesheet from "./pages/approveTimesheet/ApproveTimesheet";
 
 
 const App = () => {
@@ -66,8 +68,11 @@ const App = () => {
                       <Route path="/timesheet" element={<PrivateRoute element={TimeSheet} roles={['employee', 'admin']} />} />
                       <Route path="/team" element={<PrivateRoute element={Team} roles={['employee', 'admin']} />} />
                       <Route path="/punchinApproved" element={<PrivateRoute element={PunchinApproved} roles={['employee', 'admin']} />} />
+                      <Route path="/timesheetApprove" element={<PrivateRoute element={ApproveTimesheet} roles={['employee', 'admin']} />} />
                       <Route path="/admin" element={<PrivateRoute element={AdminDashboard} roles={['admin']} />} />
                       <Route path="/service" element={<PrivateRoute element={Services} roles={['admin']} />} />
+                      <Route path="/leaveApprove" element={<PrivateRoute element={LeaveApprove} roles={['admin']} />} />
+
 
                       {/* Redirect to Home if no match */}
                       <Route path="*" element={<Navigate to="/" />} />

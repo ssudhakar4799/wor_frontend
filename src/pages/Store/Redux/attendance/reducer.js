@@ -8,7 +8,9 @@ export const initialState = {
     checkout_Time:"",
     todayStatus:true,
     checkInAllDatas:[],
-    approvedAttendanceData:[]
+    approvedAttendanceData:[],
+    leaves:[],
+    approvedLeaves:[]
 }
 
 function reducer(state = initialState, action) {
@@ -34,8 +36,18 @@ function reducer(state = initialState, action) {
                 ...state,
                 ...{ approvedAttendanceData:action.payload }
             }
-            default:
-            return state;
+        case actionTypes.LIST_OF_LEAVE:
+            return {
+                ...state,
+                ...{ leaves:action.payload }
+            }
+        case actionTypes.APPROVED_LEAVE:
+            return {
+                ...state,
+                ...{ approvedLeaves:action.payload }
+            }    
+        default:
+        return state;
     };
 
 }

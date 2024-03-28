@@ -11,7 +11,8 @@ export const initialState = {
     profile: "",
     userName: "",
     role: "",
-    empId: ""
+    empId: "",
+    assingnRptMng:null
 }
 
 function reducer(state = initialState, action) {
@@ -20,7 +21,7 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 ...{
-                    isAuthentification: true, rptManager:action.payload.rptManager, usertype: action.payload.userType, userId: action.payload.userId, userName: action.payload.name, profile: action.payload.profile, role: action.payload.role, token: action.payload.token, empId: action.payload.empId
+                    isAuthentification: true, rptManager:action.payload.rptManager, usertype: action.payload.userType, userId: action.payload.userId, userName: action.payload.name, profile: action.payload.profile, role: action.payload.role, token: action.payload.token, empId: action.payload.empId,assingnRptMng:action.payload.reportingManager
                 }
             }
         case actionTypes.LOGOUT:
@@ -36,7 +37,8 @@ function reducer(state = initialState, action) {
                     profile: "",
                     userName: "",
                     role: "",
-                    empId: ""
+                    empId: "",
+                    assingnRptMng:null
                 }
             };
         case actionTypes.LOGINDETAILS:
@@ -53,11 +55,6 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 ...{ favorite: action.payload }
-            };
-        case actionTypes.TIMESHEETS:
-            return {
-                ...state,
-                ...{ timesheet: action.payload }
             };
         default:
             return state;

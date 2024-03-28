@@ -21,6 +21,13 @@ import { getAllUser, regUser } from '../api/Api';
 import { useDispatch, useSelector } from 'react-redux';
 import { userGetData } from '../Store/Redux/users/action';
 
+
+// loader 
+import Loader from '../../components/Loader';
+
+
+
+
 const AdminDashboard = () => {
 
     // userList for Slice
@@ -56,7 +63,7 @@ const AdminDashboard = () => {
 
 
 
-    const submit = async (data) => {
+    const submit = async (data) => { 
 
         try {
             console.log(data.profile[0]);
@@ -291,8 +298,8 @@ const AdminDashboard = () => {
                                         {...register("reportingManager",
                                         )} >
                                         <option>Options</option>
-                                        <option value="FAB002">Vinoth</option>
-                                        <option value="FAB003">Praba</option>
+                                        <option value="FAB0002">Vinoth</option>
+                                        <option value="FAB0003">Praba</option>
                                     </select>
                                     {/* <p className='text-danger'>{errors.reportingManager?.message}</p> */}
                                 </div>
@@ -416,8 +423,10 @@ const AdminDashboard = () => {
                     </div>
                 </div>
             </div> */}
+           
             <div className="row">
                 {
+                     userList.length > 0 ? 
                     userList?.map((items, index) => {
                         return (
                             <div className="col-12 col-sm-12 col-md-4 pt-4" key={index}>
@@ -462,7 +471,7 @@ const AdminDashboard = () => {
                             </div>
 
                         )
-                    })
+                    }) : <Loader />
                 }
 
             </div>

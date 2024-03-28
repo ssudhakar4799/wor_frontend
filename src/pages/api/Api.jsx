@@ -1,7 +1,7 @@
 import { logDOM } from "@testing-library/react";
 import axios from "axios";
 
-const BASE_URL = "https://workplace-akcw.onrender.com/LightHouse";
+const BASE_URL = "http://localhost:8000/LightHouse";
 
 // Regsiter
 export const regUser = async (Payload) => {
@@ -52,7 +52,7 @@ export const getAllUser = async (Payload) => {
 };
 
 // punchIn
-export const punchIn = async (token,Payload) => {
+export const punchIn = async (token, Payload) => {
   const response = await axios
     .post(`${BASE_URL}/checkin?token=${token}`, Payload, {
       headers: {
@@ -68,7 +68,7 @@ export const punchIn = async (token,Payload) => {
 };
 
 // punchOut
-export const punchOut = async (token,Payload) => {
+export const punchOut = async (token, Payload) => {
   const response = await axios
     .post(`${BASE_URL}/checkOut?token=${token}`, Payload, {
       headers: {
@@ -150,3 +150,135 @@ export const approveOrReject = async (Payload) => {
     .catch((error) => ({ error: error }));
   return response;
 };
+
+// apply leave createLeave
+
+export const applyLeave = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/createLeave?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
+// find leave 
+
+export const leaveList = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/findOneUserLeaves?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
+// leave of pending list
+
+export const pendingLeaves = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/pendingLeave?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
+// approve or reject leave 
+export const approveOrRejectLeave = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/updateLeave?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
+// create TimeSheet
+export const createTimeSheet = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/createTimeSheet?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
+// fetch oneuser  TimeSheet
+export const getOneUserTimeSheet = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/findOneUserAllTimeSheets?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
+// pending Timesheet fetch
+export const getPendingTimesheet = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/pendingTimesheets?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
+// approve Timesheet 
+export const approveOrRejectTimesheet = async (token, Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/approveTimesheet?token=${token}`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }))
+  return response;
+}
+
