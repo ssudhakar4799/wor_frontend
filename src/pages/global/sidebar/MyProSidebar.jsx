@@ -143,7 +143,7 @@ const MyProSidebar = () => {
                   alt="profile user"
                   width="100px"
                   height="100px"
-                  src={`http://localhost:8000/${profile}`}
+                  src={`https://workplace-akcw.onrender.com/${profile}`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
