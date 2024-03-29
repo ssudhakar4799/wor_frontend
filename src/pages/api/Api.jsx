@@ -1,8 +1,8 @@
 import { logDOM } from "@testing-library/react";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000/LightHouse";
-
+// const BASE_URL = "http://localhost:8000/LightHouse";  
+const BASE_URL = "https://workplace-akcw.onrender.com/LightHouse";
 // Regsiter
 export const regUser = async (Payload) => {
   const response = await axios
