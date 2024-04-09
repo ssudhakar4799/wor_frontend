@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom"
 import { ColorModeContext, tokens } from "../../theme";
 import {
   useTheme,
@@ -27,12 +28,21 @@ const Topbar = () => {
   const { toggleSidebar, broken, rtl } = useProSidebar();
   const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch();
+  // navigate
+  const navigate = useNavigate()
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (menus) => {
+    console.log(menus);
+    if(menus === "settings"){
+
+    }
+    if(menus === "profile"){
+      navigate("/profile")
+    }
     setAnchorEl(null);
   };
 
@@ -83,11 +93,11 @@ const Topbar = () => {
         <Popover
           open={Boolean(anchorEl)}
           anchorEl={anchorEl}
-          onClose={handleMenuClose}
+          onClose={()=>handleMenuClose()}
         >
-          <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+          <MenuItem onClick={()=>handleMenuClose("settings")}>Settings</MenuItem>
           <MenuItem onClick={logOut}>Logout</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          <MenuItem onClick={()=>handleMenuClose("profile")}>Profile</MenuItem>
         </Popover>
         {broken && rtl && (
           <IconButton

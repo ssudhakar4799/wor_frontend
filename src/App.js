@@ -20,6 +20,7 @@ import { logout } from "./pages/Store/Redux/auth/action";
 import { jwtDecode as decode } from 'jwt-decode';
 import LeaveApprove from "./pages/leaveApprove/LeaveApprove";
 import ApproveTimesheet from "./pages/approveTimesheet/ApproveTimesheet";
+import Profile from "./pages/profile/Profile";
 
 
 const App = () => {
@@ -65,6 +66,7 @@ const App = () => {
                     <Routes>
                       <Route path="/" element={<Navigate to={usertype === 'admin' ? '/admin' : '/employee'} />} />
                       <Route path="/employee" element={<PrivateRoute element={Dashboard} roles={['employee']} />} />
+                      <Route path="/profile" element={<PrivateRoute element={Profile} roles={['employee']} />} />
                       <Route path="/timesheet" element={<PrivateRoute element={TimeSheet} roles={['employee', 'admin']} />} />
                       <Route path="/team" element={<PrivateRoute element={Team} roles={['employee', 'admin']} />} />
                       <Route path="/punchinApproved" element={<PrivateRoute element={PunchinApproved} roles={['employee', 'admin']} />} />

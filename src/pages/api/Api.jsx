@@ -1,7 +1,8 @@
 import { logDOM } from "@testing-library/react";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000/LightHouse";
+// const BASE_URL = "http://localhost:8000/LightHouse";
+const BASE_URL = "https://workplace-akcw.onrender.com/LightHouse";
 
 // Regsiter
 export const regUser = async (Payload) => {
@@ -23,6 +24,22 @@ export const regUser = async (Payload) => {
 export const loginUser = async (Payload) => {
   const response = await axios
     .post(`${BASE_URL}/loginDetails`, Payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => ({ error: error }));
+  return response;
+};
+
+// findOneUser
+export const particularUserDetails = async (token,Payload) => {
+  const response = await axios
+    .post(`${BASE_URL}/findOneUser?token=${token}`, Payload, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -280,5 +297,22 @@ export const approveOrRejectTimesheet = async (token, Payload) => {
     })
     .catch((error) => ({ error: error }))
   return response;
+}
+
+// change password
+
+export const changePassword = async (token,Payload)=>{
+  const response = await axios
+  .post(`${BASE_URL}/changePassword?token=${token}`, Payload ,{
+    headers:{
+      Accept:"application/json",
+      "Content-Type":"application/json"
+    }
+  })
+  .then((response)=>{
+    return response.data;
+  })
+  .catch((error)=>({error:error}))
+  return response
 }
 
