@@ -435,7 +435,7 @@ const AdminDashboard = () => {
                                     <span class="pro">PRO</span>
                                     <img
                                         class="round"
-                                        src={`http://localhost:8000/${items.profile}`}
+                                        src={`https://workplace-akcw.onrender.com/${items.profile}`}
                                         alt="user"
                                         width={"50%"}
                                     />
